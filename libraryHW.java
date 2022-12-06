@@ -1,5 +1,8 @@
 package HWJava;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -54,7 +57,7 @@ public class libraryHW {
             sc.next();
             operation = getOperation();
         }
-        // sc.close();
+        sc.close();
         return operation;
     }
 
@@ -99,7 +102,7 @@ public class libraryHW {
         return elementToSearch;
     }
 
-    // проверка выражения 
+    // проверка выражения
     public static boolean checkExpression(String x, String y, String res) {
         int first = Integer.parseInt(x);
         int second = Integer.parseInt(y);
@@ -110,7 +113,6 @@ public class libraryHW {
             return false;
         }
     }
-
 
     // Mетод восстанавливающий выражение из формы 1? + ?5 = 69
     public static String restoringExpression(String expression) {
@@ -135,6 +137,78 @@ public class libraryHW {
         return "Решения не существует!";
     }
 
-    
+    // чтение файла
+    static String fileReader(String file) throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        String str = br.readLine();
+        System.out.println();
+        br.close();
+        return str;
+    }
+
+    // преобразование строки с данными студента в билдер
+    static StringBuilder getStudent(String data) {
+        StringBuilder builder = new StringBuilder();
+
+        String[] startStudent = data.split(", ");
+        for (String elem : startStudent) {
+            String[] resultStudent = elem.split(": ");
+            String key = resultStudent[0];
+            String value = resultStudent[1];
+
+            if (!value.equals("null "))
+                builder.append(String.format("%s= \"%s\" AND ", key, value));
+        }
+        return builder;
+    }
+
+    // заполнение массива размером number рандомно
+    static int[] arrayNumber(int number) {
+        int[] array = new int[number];
+        for (int i = 0; i < number; i++) {
+            array[i] = getRandomNumber(4, 99);
+        }
+        return array;
+    }
+
+    // вывод на консоль одномерного массива
+    static void printArray(int[] array) {
+        for (int element : array) {
+            System.out.print(element + " ");
+        }
+        System.out.println();
+    }
+
+    // пузырьковая сортировка
+    static void bubbleSorter(int[] array) {
+        for (int i = array.length - 1; i >= 1; i--) {
+            for (int j = 0; j < i; j++) {
+                if (array[j] > array[j + 1]) {
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+            }
+        }
+    }
+
+    // преобразование строки с данными в билдер
+    static StringBuilder getStudentInfo(String data) {
+        StringBuilder builder = new StringBuilder();
+        String[] startStudent = data.split(", ");
+        for (String elem : startStudent) {
+            String[] resultStudent = elem.split(": ");
+            String value = resultStudent[1];
+            builder.append(value);
+        }
+        StringBuilder resBuilder = new StringBuilder();
+        String[] str = builder.toString().split(" ");
+        for (int i = 0; i < str.length; i += 3) {
+            resBuilder.append(String.format("Студент %s получил %s по предмету %s \n", str[i], str[i + 1], str[i + 2]));
+
+        }
+        System.out.println(resBuilder);
+        return resBuilder;
+    }
 
 }
