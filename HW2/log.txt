@@ -1,29 +1,70 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-<record>
-  <date>2022-12-01T14:27:04.228832Z</date>
-  <millis>1669904824228</millis>
-  <nanos>832000</nanos>
-  <sequence>0</sequence>
-  <logger>HWJava.HW2.HW2_Task2</logger>
-  <level>ALL</level>
-  <class>HWJava.HW2.HW2_Task2</class>
-  <method>main</method>
-  <thread>1</thread>
-  <message>тестовое логирование</message>
-</record>
-<record>
-  <date>2022-12-01T14:27:04.243113Z</date>
-  <millis>1669904824243</millis>
-  <nanos>113000</nanos>
-  <sequence>1</sequence>
-  <logger>HWJava.HW2.HW2_Task2</logger>
-  <level>ALL</level>
-  <class>HWJava.HW2.HW2_Task2</class>
-  <method>main</method>
-  <thread>1</thread>
-  <message>тестовое логирование</message>
-  <param>[I@4617c264</param>
-</record>
-</log>
+дек. 06, 2022 11:24:01 PM HWJava.HW2.HW2_Task2 bubbleSorter
+INFO: i=5
+дек. 06, 2022 11:24:01 PM HWJava.HW2.HW2_Task2 bubbleSorter
+INFO: j=0
+дек. 06, 2022 11:24:01 PM HWJava.HW2.HW2_Task2 bubbleSorter
+INFO: j=1
+дек. 06, 2022 11:24:01 PM HWJava.HW2.HW2_Task2 bubbleSorter
+INFO: array[j]=78
+дек. 06, 2022 11:24:01 PM HWJava.HW2.HW2_Task2 bubbleSorter
+INFO: array[j+1]=62
+дек. 06, 2022 11:24:01 PM HWJava.HW2.HW2_Task2 bubbleSorter
+INFO: temp=78
+дек. 06, 2022 11:24:01 PM HWJava.HW2.HW2_Task2 bubbleSorter
+INFO: j=2
+дек. 06, 2022 11:24:01 PM HWJava.HW2.HW2_Task2 bubbleSorter
+INFO: array[j]=78
+дек. 06, 2022 11:24:01 PM HWJava.HW2.HW2_Task2 bubbleSorter
+INFO: array[j+1]=46
+дек. 06, 2022 11:24:01 PM HWJava.HW2.HW2_Task2 bubbleSorter
+INFO: temp=78
+дек. 06, 2022 11:24:01 PM HWJava.HW2.HW2_Task2 bubbleSorter
+INFO: j=3
+дек. 06, 2022 11:24:01 PM HWJava.HW2.HW2_Task2 bubbleSorter
+INFO: j=4
+дек. 06, 2022 11:24:01 PM HWJava.HW2.HW2_Task2 bubbleSorter
+INFO: i=4
+дек. 06, 2022 11:24:01 PM HWJava.HW2.HW2_Task2 bubbleSorter
+INFO: j=0
+дек. 06, 2022 11:24:01 PM HWJava.HW2.HW2_Task2 bubbleSorter
+INFO: array[j]=67
+дек. 06, 2022 11:24:01 PM HWJava.HW2.HW2_Task2 bubbleSorter
+INFO: array[j+1]=62
+дек. 06, 2022 11:24:01 PM HWJava.HW2.HW2_Task2 bubbleSorter
+INFO: temp=67
+дек. 06, 2022 11:24:01 PM HWJava.HW2.HW2_Task2 bubbleSorter
+INFO: j=1
+дек. 06, 2022 11:24:01 PM HWJava.HW2.HW2_Task2 bubbleSorter
+INFO: array[j]=67
+дек. 06, 2022 11:24:01 PM HWJava.HW2.HW2_Task2 bubbleSorter
+INFO: array[j+1]=46
+дек. 06, 2022 11:24:01 PM HWJava.HW2.HW2_Task2 bubbleSorter
+INFO: temp=67
+дек. 06, 2022 11:24:01 PM HWJava.HW2.HW2_Task2 bubbleSorter
+INFO: j=2
+дек. 06, 2022 11:24:01 PM HWJava.HW2.HW2_Task2 bubbleSorter
+INFO: j=3
+дек. 06, 2022 11:24:01 PM HWJava.HW2.HW2_Task2 bubbleSorter
+INFO: i=3
+дек. 06, 2022 11:24:01 PM HWJava.HW2.HW2_Task2 bubbleSorter
+INFO: j=0
+дек. 06, 2022 11:24:01 PM HWJava.HW2.HW2_Task2 bubbleSorter
+INFO: array[j]=62
+дек. 06, 2022 11:24:01 PM HWJava.HW2.HW2_Task2 bubbleSorter
+INFO: array[j+1]=46
+дек. 06, 2022 11:24:01 PM HWJava.HW2.HW2_Task2 bubbleSorter
+INFO: temp=62
+дек. 06, 2022 11:24:01 PM HWJava.HW2.HW2_Task2 bubbleSorter
+INFO: j=1
+дек. 06, 2022 11:24:01 PM HWJava.HW2.HW2_Task2 bubbleSorter
+INFO: j=2
+дек. 06, 2022 11:24:01 PM HWJava.HW2.HW2_Task2 bubbleSorter
+INFO: i=2
+дек. 06, 2022 11:24:01 PM HWJava.HW2.HW2_Task2 bubbleSorter
+INFO: j=0
+дек. 06, 2022 11:24:01 PM HWJava.HW2.HW2_Task2 bubbleSorter
+INFO: j=1
+дек. 06, 2022 11:24:01 PM HWJava.HW2.HW2_Task2 bubbleSorter
+INFO: i=1
+дек. 06, 2022 11:24:01 PM HWJava.HW2.HW2_Task2 bubbleSorter
+INFO: j=0
