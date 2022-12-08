@@ -3,7 +3,10 @@ package HWJava;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
@@ -329,6 +332,106 @@ public class libraryHW {
             res.add(elementA);
         }
         return res;
+    }
+
+    // создание и рандомное заполнение LinkedList
+    static LinkedList<Integer> linkedListRandom(int size, int start, int end) {
+        Random random = new Random();
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        for (int i = 0; i < size; i++) {
+            int num = random.nextInt(start, end);
+            linkedList.add(num);
+
+        }
+        return linkedList;
+    }
+
+    // разворот LinkedList
+    static LinkedList<Integer> reversalLinkedListRandom(LinkedList<Integer> linkedList) {
+        LinkedList<Integer> linkedListResult = new LinkedList<>();
+        for (int i = 0; i < linkedList.size(); i++) {
+            linkedListResult.addFirst(linkedList.get(i));
+        }
+        return linkedListResult;
+    }
+
+    // enqueue() - помещает элемент в конец очереди
+    static void enqueue(LinkedList<Integer> queue, int value) {
+        queue.addLast(value);
+    }
+
+    // first() - возвращает первый элемент из очереди, не удаляя
+    static void first(LinkedList<Integer> queue) {
+        if (queue.size() == 0) {
+            System.out.println("Очередь пуста");
+        } else {
+            int first = queue.getFirst();
+            System.out.println("Первый элемент очереди - " + first);
+        }
+
+    }
+
+    // dequeue() - возвращает первый элемент из очереди и удаляет его,
+    static void dequeue(LinkedList<Integer> queue) {
+        if (queue.size() == 0) {
+            System.out.println("Очередь пуста");
+        } else {
+            int first = queue.getFirst();
+            System.out.println("Первый элемент очереди - " + first);
+            queue.removeFirst();
+        }
+    }
+
+    // постфиксный калькулятор
+    static Object calculatePostFix(String postFix) {
+        String[] postFixArray = postFix.split(" ");
+        Deque<Double> deque = new ArrayDeque<>();
+        for (int i = 0; i < postFixArray.length; i++) {
+            String elem = postFixArray[i];
+            if (isNumber(elem)) {
+                deque.push(Double.parseDouble(elem));
+            } else if (elem.equals("+") && deque.size() >= 2) {
+                double res = deque.pop() + deque.pop();
+                deque.push(res);
+            } else if (elem.equals("*") && deque.size() >= 2) {
+                double res = deque.pop() * deque.pop();
+                deque.push(res);
+            } else if (elem.equals("^") && deque.size() >= 2) {
+                double secondOp = deque.pop();
+                double res = Math.pow(deque.pop(), secondOp);
+                deque.push(res);
+            } else if (elem.equals("-") && deque.size() >= 2) {
+                double secondOp = deque.pop();
+                double res = deque.pop() - secondOp;
+                deque.push(res);
+            } else if (elem.equals("/") && deque.size() >= 2) {
+                double secondOp = deque.pop();
+                double res = deque.pop() / secondOp;
+                deque.push(res);
+            }
+        }
+        if (!isSteck(deque)) {
+            System.out.println("Выражение введено некорректно");
+        } else
+            return deque.pop();
+        return null;
+    }
+
+    // проверка является ли строка числом
+    static boolean isNumber(String str) {
+        try {
+            Double.parseDouble(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    // проверяем стек на наличие всего лишь одного элемента (результата вычислений)
+    static boolean isSteck(Deque<Double> deque) {
+        if (deque.size() == 1)
+            return true;
+        return false;
     }
 
 }
