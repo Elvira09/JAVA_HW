@@ -3,8 +3,12 @@ package HWJava;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+
+import HWJava.HW3.IntegerComparator;
 
 public class libraryHW {
     // генерация случайного числа в заданном диапазоне
@@ -179,7 +183,7 @@ public class libraryHW {
         System.out.println();
     }
 
-    // пузырьковая сортировка
+    // пузырьковая сортировка с логированием итераций
     static void bubbleSorter(int[] array) {
         for (int i = array.length - 1; i >= 1; i--) {
             for (int j = 0; j < i; j++) {
@@ -209,6 +213,122 @@ public class libraryHW {
         }
         System.out.println(resBuilder);
         return resBuilder;
+    }
+
+    // заполнение массива рандомно в заданном диапозоне
+    static int[] fillingArrayRandomNumbers(int length, int min, int max) {
+        Random random = new Random();
+        int[] array = new int[length];
+        for (int index = 0; index < array.length; index++) {
+            array[index] = random.nextInt(max - min) + min;
+        }
+        return array;
+    }
+
+    // сортировка левой и правой части массива
+    static int[] sortArray(int[] array) {
+
+        if (array == null)
+            return null;
+        if (array.length < 2)
+            return array; // возврат из рекурсивного вызова
+
+        int[] arrayLeft = new int[array.length / 2];
+        System.arraycopy(array, 0, arrayLeft, 0, array.length / 2);
+        int[] arrayRight = new int[array.length - array.length / 2];
+        System.arraycopy(array, array.length / 2, arrayRight, 0, array.length - array.length / 2);
+
+        arrayLeft = sortArray(arrayLeft);
+        arrayRight = sortArray(arrayRight);
+
+        return mergeArray(arrayLeft, arrayRight);
+    }
+
+    // слияние отсортированных массивов
+    static int[] mergeArray(int[] arrayLeft, int[] arrayRight) {
+        int[] arrayResult = new int[arrayLeft.length + arrayRight.length];
+        int i = 0, j = 0, k = 0;
+        while (i < arrayLeft.length && j < arrayRight.length) {
+            arrayResult[k++] = arrayLeft[i] < arrayRight[j] ? arrayLeft[i++] : arrayRight[j++];
+        }
+        if (i < arrayLeft.length) {
+            System.arraycopy(arrayLeft, i, arrayResult, k, arrayLeft.length - i);
+        } else {
+            if (j < arrayRight.length) {
+                System.arraycopy(arrayRight, j, arrayResult, k, arrayRight.length - j);
+            }
+        }
+        return arrayResult;
+    }
+
+    // создание и рандомное заполнение листа
+    public static List<Integer> listArray(int size, int start, int end) {
+        Random random = new Random();
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            int num = random.nextInt(start, end);
+            list.add(num);
+        }
+        return list;
+    }
+
+    // удаление эле ментов с четным значением из листа
+    public static List<Integer> removingEvenElements(List<Integer> list) {
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i) % 2 == 0) {
+                list.remove(list.get(i));
+                i--;
+            }
+        }
+        return list;
+    }
+
+    // минимальное значение в листе
+    public static int minList(List<Integer> list) {
+        IntegerComparator ic = new IntegerComparator();
+        list.sort(ic);
+        int min = list.get(0);
+        return min;
+    }
+
+    // максимальное значение в листе
+    public static int maxList(List<Integer> list) {
+        IntegerComparator ic = new IntegerComparator();
+        list.sort(ic);
+        int max = list.get(list.size() - 1);
+        return max;
+    }
+
+    // среднее арифметическое листа
+    public static int averageList(List<Integer> list) {
+        int sum = 0;
+        for (Integer element : list) {
+            sum += element;
+        }
+        int average = sum / list.size();
+        return average;
+    }
+
+    // вычисление разности коллекций
+    public static List<Integer> collectionDifference(List<Integer> listA, List<Integer> listB) {
+        List<Integer> res = new ArrayList<>();
+        for (Integer elementA : listA) {
+            if (!listB.contains(elementA))
+                res.add(elementA);
+        }
+        return res;
+    }
+
+    // вычисление симметричной разности коллекций
+    public static List<Integer> symmetricСollectionDifference(List<Integer> listA, List<Integer> listB) {
+        List<Integer> res = new ArrayList<>();
+        for (Integer elementA : collectionDifference(listA, listB)) {
+            res.add(elementA);
+        }
+        for (Integer elementA : collectionDifference(listB, listA)) {
+            res.add(elementA);
+        }
+        return res;
     }
 
 }

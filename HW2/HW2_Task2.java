@@ -46,7 +46,7 @@ public class HW2_Task2 {
         System.out.println();
     }
 
-    // пузырьковая сортировка
+    // пузырьковая сортировка с логированием итераций
     static void bubbleSorter(int[] array) throws SecurityException, IOException  {
         Logger logger = Logger.getLogger(HW2_Task2.class.getName());
         FileHandler fh = new FileHandler("HWJava/HW2/log.txt");
