@@ -1,13 +1,17 @@
 package HWJava;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.LineNumberReader;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -92,10 +96,11 @@ public class libraryHW {
     }
 
     // считывание текста из консоли
-    public static String scannerText() {
+    static String scannerText(String messag) {
         Scanner sc = new Scanner(System.in);
+        System.out.println(messag);
         String text = sc.nextLine();
-        sc.close();
+        // sc.close();
         return text;
     }
 
@@ -170,10 +175,10 @@ public class libraryHW {
     }
 
     // заполнение массива размером number рандомно
-    static int[] arrayNumber(int number) {
-        int[] array = new int[number];
-        for (int i = 0; i < number; i++) {
-            array[i] = getRandomNumber(4, 99);
+    static int[] arrayNumber(int size, int min, int max) {
+        int[] array = new int[size];
+        for (int i = 0; i < size; i++) {
+            array[i] = getRandomNumber(min, max);
         }
         return array;
     }
@@ -433,5 +438,99 @@ public class libraryHW {
             return true;
         return false;
     }
+
+    // проверка наличия файла и создание при необходимости
+    static void createFile(String pathFile) {
+        try {
+            File file = new File(pathFile);
+            if (file.createNewFile())
+                System.out.println("Файл создан");
+            else
+                System.out.println("Файл уже существует");
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+    }
+
+    // запись/дозапись в файл
+    static String writerFile(String pathFile, Map<Integer, Map<String, String>> data) {
+        try (FileWriter fw = new FileWriter(pathFile, true)) // true - данные дозаписываются в конец файла, а при false
+        // - файл полностью перезаписывается
+        {
+            fw.write(data.toString());
+            fw.append("\n");
+            fw.flush();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return data.toString();
+    }
+
+    // чтение файла и поиск вхождения в содержание
+    static String fileReader(String pathFile, String find) throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(pathFile));
+        String line = br.readLine();
+        while (line != null) {
+            if (line.contains(find))
+                System.out.println(line);
+            line = br.readLine();
+        }
+        br.close();
+        return line;
+    }
+
+    // подсчет строк в файле
+    static Integer getLineCountByReader(String pathFile) throws IOException {
+        try (var lnr = new LineNumberReader(new BufferedReader(new FileReader(pathFile)))) {
+            while (lnr.readLine() != null)
+                ;
+            return lnr.getLineNumber();
+        }
+    }
+
+    // считывание данных из консоли
+    static ArrayList<String> scannerData(String messag, int num) {
+        System.out.println(messag);
+        Scanner sc = new Scanner(System.in);
+        ArrayList<String> arrayList = new ArrayList<String>(num);
+        while (arrayList.size() < num) {
+            arrayList.add(sc.nextLine());
+        }
+        // sc.close();
+        return arrayList;
+    }
+
+    // пирамидальная сортировка (HeapSort)
+    static void heapSort(int[] array) {
+
+        int n = array.length;
+        for (int i = n / 2 - 1; i >= 0; i--) {
+            heapSift(array, n, i);
+        }
+        for (int i = n - 1; i >= 0; i--) {
+            int temp = array[0];
+            array[0] = array[i];
+            array[i] = temp;
+            heapSift(array, i, 0);
+        }
+    }
+
+    //  делаем из массива макс-кучу для пирамидальной сортировки (HeapSort)
+    static void heapSift(int[] array, int size, int root) {
+        int leftChild = 2 * root + 1;
+        int rightChild = 2 * root + 2;
+        int max = root;
+        if (leftChild < size && array[leftChild] > array[max])
+            max = leftChild;
+        if (rightChild < size && array[rightChild] > array[max])
+            max = rightChild;
+        if (max != root) {
+            int temp = array[max];
+            array[max] = array[root];
+            array[root] = temp;
+            heapSift(array, size, max);
+        }
+    }
+
 
 }

@@ -1,6 +1,7 @@
 package HWJava.HW1;
 
-import HWJava.libraryHW;
+import java.util.Random;
+
 
 /*
 Вычислить n-ое треугольного число(сумма чисел от 1 до n), 
@@ -12,10 +13,32 @@ n! (произведение чисел от 1 до n)
  */
 public class HW1_Task1 {
     public static void main(String[] args) {
-        int number = libraryHW.getRandomNumber(1, 10);
+        int number = getRandomNumber(1, 10);
 
         System.out.println("Рандомное число - " + number);
-        System.out.println("Треугольное число - " + libraryHW.triangularNumber(number));
-        System.out.println("Факториал числа  - " + libraryHW.factorial(number));
+        System.out.println("Треугольное число - " + triangularNumber(number));
+        System.out.println("Факториал числа  - " + factorial(number));
     }
+
+    // генерация случайного числа в заданном диапазоне
+    public static int getRandomNumber(int min, int max) {
+        Random random = new Random();
+        int number = random.nextInt(max - min) + min;
+        return number;
+    }
+
+    // вычисление треугольного числа
+    public static int triangularNumber(int number) {
+        int result = (number * (number + 1)) / 2;
+        return result;
+    }
+
+    // факториал
+    public static int factorial(int n) {
+        if (n <= 1)
+            return 1;
+        else
+            return n * factorial(n - 1);
+    }
+
 }
