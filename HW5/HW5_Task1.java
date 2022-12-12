@@ -37,10 +37,7 @@ public class HW5_Task1 {
             data.put(key, people);
 
             writerFile(pathFile, data);
-        } else if (scannerText("Найти контакт  Y / N ?").equalsIgnoreCase("Y")) {
-            // if(fileReader(pathFile, scannerText("Кого ищем ? ")))
-            // else System.out.println("Ничего не");
-            
+        } else if (scannerText("Найти контакт  Y / N ?").equalsIgnoreCase("Y")) {           
             fileReader(pathFile, scannerText("Кого ищем ? "));
             
         } else
@@ -112,8 +109,7 @@ public class HW5_Task1 {
                 Ничего не найдено 
                 {4={phone=[89217328505, 89007891278, ], surname=[Казанцева], name=[Ирина]}}
              */
-            line = br.readLine();
-            
+            line = br.readLine();          
         }
        
         br.close();
