@@ -85,10 +85,12 @@ public class HW5_Task1 {
     static String fileReader(String pathFile, String find) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(pathFile));
         String line = br.readLine();
+        
         while (line != null) {
             if (line.toLowerCase().contains(find))
                 System.out.println(line);
             else System.out.println("Ничего не найдено "); 
+            
             /*
             не могу сообразить как сделать, чтоб сообщение выводилось один раз и не выводилось при результативном поиске
                 Найти контакт  Y / N ?
