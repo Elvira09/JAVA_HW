@@ -18,6 +18,7 @@ import java.util.Set;
 4. Далее нужно запросить минимальные значения для указанных критериев - сохранить параметры фильтрации можно также в Map.
 Отфильтровать ноутбуки их первоначального множества и вывести проходящие по условиям.
  */
+
 public class Main {
 
     public static void main(String[] args) throws Exception {
@@ -65,5 +66,4 @@ public class Main {
         resultFilter(laptops, getFilterParameters(), filter);
         System.out.println(filter);
     }
-
 }
